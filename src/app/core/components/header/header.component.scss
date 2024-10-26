@@ -1,0 +1,42 @@
+.sign-in {
+    padding-top: 12px !important;
+}
+
+.counter-view {
+    position: absolute;
+    bottom: -11px;
+    right: -9px;
+    color: orangered;
+    font-size: 15px;
+}
+
+.promo {
+    box-shadow: 0px 3px 26px #f8f8f8;
+}
+
+.logo {
+    height: 80px;
+}
+
+.active{
+    background-color: #d3d3d33b;
+    border-radius: 5px;
+}
+
+@media screen and (max-width : 700px) {
+    .top-info {
+        width: 100%;
+    }
+
+    .top-info:first-of-type {
+        justify-content: flex-start;
+    }
+
+    .top-info:last-of-type {
+        justify-content: flex-end;
+
+        div {
+            margin-top: 0px !important;
+        }
+    }
+}

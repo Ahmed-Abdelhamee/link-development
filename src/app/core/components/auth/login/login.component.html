@@ -1,0 +1,17 @@
+<div class="wrapper">
+    <form class="mt-3" [formGroup]="login" (ngSubmit)="submit()">
+        <div class="form-field d-flex align-items-center form-control" [ngClass]="{'is-invalid':email?.invalid}">
+            <span class="bi bi-envelope mx-2"></span>
+            <input type="email" formControlName="email" placeholder="Email">
+        </div>
+        <small class="text-danger fs-6" *ngIf="email?.invalid">Email is required</small>
+        <div class="form-field d-flex align-items-center">
+            <span class="bi bi-key mx-2"></span>
+            <input type="password" formControlName="pass" placeholder="Password">
+        </div>
+        <button class="btn mt-3 mb-2" type="submit">Login</button>
+    </form>
+    <div class="text-center fs-6">
+        <a routerLink="/auth/register">Sign up</a>
+    </div>
+</div>

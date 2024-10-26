@@ -1,0 +1,68 @@
+<div class="col-12 pt-2 d-flex justifuy-content-center">
+    <div class="col-sm-8 card mx-auto">
+        <div class="row">
+            <div class="col-12 cart">
+                <div class="title border-bottom">
+                    <div class="row">
+                        <div class="col">
+                            <h4><b>Shopping Cart</b></h4>
+                        </div>
+                        <div class="col align-self-center text-right text-muted">{{promo_Order_Products.length}} items
+                        </div>
+                    </div>
+                </div>
+                <!-- looping on array and viewing products -->
+                @for (item of promo_Order_Products; track $index) {
+                <div class="row border-bottom text-center">
+                    <div class="row p-2 align-items-center">
+                        <div class="col-2"><img class="img-fluid rounded" [src]="item.product.ProductImg"
+                                [alt]="item.product.ProductName"></div>
+                        <div class="col">
+                            <div class="row text-muted">{{item.product.ProductName}}</div>
+                            <div class="fs-6 text-start Discription">Discription : Lorem, ipsum dolor sit amet
+                                consectetur adipisicing
+                                elit. Alias,
+                                dolorum!</div>
+                        </div>
+                        <div class="col">
+                            <input type="number" class="form-control text-center" [(ngModel)]="item.Quantity" [disabled]="item.Quantity == item.product.AvailablePieces">
+                        </div>
+                        <div class="col">{{item.Quantity * item.product.ProductPrice | currency:'USD':'symbol':'1.1-2'}}
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+            <!-- ---------------- viewing check out --------------- -->
+            <div class="col-12 mx-auto mb-3 summary rounded">
+                <h5 class="mt-3"><b>Summary</b></h5>
+                <hr>
+                <div class="row">
+                    <div class="col">ITEMS {{promo_Order_Products.length}}</div>
+                    <div class="col text-right"> {{getTotalPrice() | currency:'USD':'symbol':'1.1-2'}}</div>
+                </div>
+                <form [formGroup]="Payment" (ngSubmit)="createOrder()">
+                    <p>Payment Way</p>
+                    <select class="mb-2" formControlName="PaymentType" name="PaymentType">
+                        <option class="text-muted" value="">----------</option>
+                        <option class="text-muted" value="online">Online</option>
+                        <option class="text-muted" value="cash">Cash</option>
+                    </select>
+                    <small class="text-danger" *ngIf="Payment.invalid">choose PaymentType</small>
+                    <div *ngIf="Payment.value.PaymentType=='online'">
+                        <p>GIVE CODE</p>
+                        <input id="code" placeholder="Enter your code">
+                    </div>
+                    <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                        <div class="col">TOTAL PRICE</div>
+                        <div class="col text-right"> {{getTotalPrice() | currency:'USD':'symbol':'1.1-2'}}</div>
+                    </div>
+                    <div class="text-center pt-3">
+                        <button class="btn btn-dark btn-light" type="submit">CHECKOUT</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
