@@ -1,0 +1,18 @@
+<section class="col-12 ">
+    <div class="col-12 pt-1 bg-cst-greenLight">
+        <!-- Media Gallery section -->
+        <article class="col-sm-5 text-light p-5pct position-relative">
+            <h2 class="text-capitalize mb-3 text-cst-maxblack fw-bold fs-1"><span class="text-cst-primary">Check</span> our latest Media Gallery</h2>
+            <p class="text-black">Every picture holds a moment, every moment holds a story</p>
+            <button class="p-2 px-5 text-capitalize btn bg-cst-primary text-cst-light">View all Photos</button>
+        </article>
+        <!-- Gallary -->
+        <div class="col-sm-7 p-5 position-relative ">
+            <swiper-container class="mySwiper" effect="cards" grab-cursor="true">
+                @for (item of sliders; track $index) {
+                    <swiper-slide><img [src]="item.image" alt=""></swiper-slide>
+                }
+            </swiper-container>
+        </div>
+    </div>
+</section>

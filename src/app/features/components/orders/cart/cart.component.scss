@@ -1,0 +1,14 @@
+.cart-card{
+    display: flex;
+}
+
+@media screen and (max-width : 700px) {
+
+    .cart-card{
+        flex-wrap: wrap;
+    }
+
+    picture {
+        width: 100% !important;
+    }
+}

@@ -1,55 +1,42 @@
-import { Product } from '../../../core/interfaces/product.interface';
-import { Component, OnDestroy } from '@angular/core';
-import { Order, ProductFlag } from '../../../core/interfaces/order.interface';
-import { ButtonModule } from 'primeng/button';
-import { TableModule } from 'primeng/table';
-import { TagModule } from 'primeng/tag';
-import { RatingModule } from 'primeng/rating';
-import { CommonModule } from '@angular/common';
-import { NgxPaginationModule } from 'ngx-pagination';
-import { RouterModule } from '@angular/router';
-import { GetTotalPriceService } from '../../../shared/services/get-total-price.service';
-import { OrdersService } from '../../../shared/services/orders.service';
-import { ProductsService } from '../../../shared/services/products.service';
+import { Component, OnDestroy, signal } from '@angular/core';
+import { Course } from '../../interfaces/course.interface';
+import { CalcService } from '../../services/calc.service';
 import { Subscription } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { ActivatedRoute, NavigationEnd, Router, RouterModule } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { cartReducer } from '../../../core/store/cart.reducer';
 
 @Component({
   selector: 'app-orders',
   standalone: true,
-  imports: [RouterModule, TableModule, TagModule, RatingModule, ButtonModule, CommonModule, NgxPaginationModule],
+  imports: [CommonModule , RouterModule],
   templateUrl: './orders.component.html',
-  styleUrls: ['./orders.component.scss','../../../shared/modal/main.scss']
+  styleUrl: './orders.component.scss'
 })
 export class OrdersComponent implements OnDestroy {
-  currentPage: number = 1;
-  pageSize: number = 10;
-  orders: Order[] = []
-  products: Product[] = []
-  subscriptions: Subscription[] = []
-
-  constructor(private ordersService: OrdersService, private productService: ProductsService
-    , private TotalPriceService: GetTotalPriceService) { }
-  
-  ngOnInit(): void {
-    this.subscriptions.push(this.ordersService.getOrders().subscribe(data => {
-      this.orders = data;
-    }));
-    this.subscriptions.push(this.productService.getProducts().subscribe(data => {
-      this.products = data;
-    }));
-  }
-
-  getTotalPrice(orderProducts: ProductFlag[]): number {
-    let prods: Product[] = []
-    orderProducts.forEach(ele => {
-      prods.push(this.products.find(item => item.ProductId == ele.ProductId) ?? {} as Product)
-    })
-    return this.TotalPriceService.getTotalPrice(prods, orderProducts)
+  cart:any={};
+  total:any = {};
+  subscriptions:Subscription[]=[];
+  segment :string = '';
+  constructor(public calcService:CalcService,private store:Store<{cart:any}>,private router:Router) {
+    store.select('cart').subscribe(res=> calcService.calculation(res.cart));
+    this.subscriptions.push(calcService.cartValue.subscribe(res=> {this.cart=res;}))
+    router.events.subscribe(data=> {
+      if (data instanceof NavigationEnd){
+        if(data.url.split("/")[data.url.split("/").length-1]=='checkout'){
+          this.segment = '/paied'
+        }else if(data.url.split("/")[data.url.split("/").length-1]=='shopping-cart'){
+          this.segment = '/shopping-cart/checkout'
+        }
+      }
+    }
+    )
   }
 
   ngOnDestroy(): void {
     for (const item of this.subscriptions) {
-      item.unsubscribe();
+      item.unsubscribe()
     }
   }
 

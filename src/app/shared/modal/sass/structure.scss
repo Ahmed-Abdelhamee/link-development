@@ -1,0 +1,28 @@
+@import './variables.scss';
+
+// get theme colors for main structure
+@each $name, $value in $themes {
+    .bg-cst-#{$name} {
+        background-color: $value !important;
+    }
+    .text-cst-#{$name} {
+        color: $value !important ;
+    }
+    .border-cst-#{$name}{
+        border: 1px solid map-get($map: $themes, $key: $name) !important;
+    }
+}
+
+// get theme colors for main structure
+@each $name, $value in $fontWeights {
+    .bg-cst-#{$name} {
+        background-color: $value !important;
+    }
+    .text-cst-#{$name} {
+        color: $value !important ;
+    }
+    .border-cst-#{$name}{
+        border: 1px solid map-get($map: $themes, $key: $name) !important;
+    }
+}
+

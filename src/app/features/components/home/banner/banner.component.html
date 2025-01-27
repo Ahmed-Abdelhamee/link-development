@@ -1,0 +1,73 @@
+<section class="col-12">
+    <div class="container pt-1 p-0px-sm">
+        <swiper-container class="mySwiper" pagination="true" pagination-dynamic-bullets="true">
+            @for (item of Banners; track $index) {
+            <swiper-slide>
+                <!-- Article section -->
+                <article class="col-sm-6 text-light p-5 position-relative">
+                    <figure><img src="circles.png" alt="" class="left-circles"></figure>
+                    <div class="text-capitalize mb-3 text-cst-maxblack fw-bold fs-1" [innerHTML]="item.title"
+                        SetSpanColor [colorCode]="item.colorCode"></div>
+                    <p class="text-black">{{item.brief}}</p>
+                    <button class="p-2 px-5 text-capitalize btn bg-cst-primary text-cst-light">get started</button>
+                </article>
+                <!-- displaying the image and website info -->
+                <div class="col-sm-6 p-5 position-relative">
+                    <!-- left side image part -->
+                    <figure
+                        class="circle-20vw bg-cst-primary d-flex justify-content-center align-items-end overflow-hidden">
+                        <img [src]="item.image" alt="" class="w-77pct h-86pct">
+                    </figure>
+                    <div class="circle-2vw bg-cst-primary"></div>
+                    <div class="circle-1vw bg-cst-primary"></div>
+                    <!-- the video courses view -->
+                    <div class="hidden-in-mob">
+                        <div class="d-flex align-items-center flag-left-center-position">
+                            <div class="left-flag bg-cst-primary rounded-2 h-content ml-2 px-1">
+                                <div [innerHTML]="iconService.laptopIcon"></div>
+                            </div>
+                            <div class="bg-light border-cst-primary rounded-4 px-3 ps-4 move-item-to-left position-relative">
+                                <p class="fw-bold m-0px fs-16">2K+</p>
+                                <p class="text-secondary m-0px fs-12">Video Courses</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- the Courses view -->
+                    <div class="hidden-in-mob">
+                        <div class="flag-top-right-position">
+                            <div class="bg-light border-cst-primary rounded-2 p-1 position-relative text-center">
+                                <div class="rounded-2 h-content mr-1 px-1 d-flex justify-content-center">
+                                    <div [innerHTML]="iconService.courcesCountIcon"></div>
+                                </div>
+                                <p class="fw-bold m-0px fs-16">5K+</p>
+                                <p class="text-secondary m-0px fs-12">Online Courses</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- the Tutors view -->
+                    <div class="hidden-in-mob">
+                        <div class="flag-bottom-right-position">
+                            <div class="d-flex align-items-center bg-light border-cst-primary rounded-2 p-1 position-relative">
+                                <div class="left-flag bg-cst-primary rounded-2 h-content mr-1 px-1">
+                                    <div [innerHTML]="iconService.tutorsIcon"></div>
+                                </div>
+                                <div class="ps-2">
+                                    <p class="text-secondary m-0px fs-12">Tutors</p>
+                                    <p class="fw-bold m-0px fs-16">+250K</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden-in-mob">
+                        <figure><img src="circles.png" alt="" class="right-circles"></figure>
+                    </div>
+                </div>
+            </swiper-slide>
+            }
+        </swiper-container>
+        <!-- light dot -->
+        <div class="col-12">
+            <div class="dot"></div>
+        </div>
+    </div>
+</section>

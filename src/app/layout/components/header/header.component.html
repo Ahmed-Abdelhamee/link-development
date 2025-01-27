@@ -1,0 +1,32 @@
+<header class="col-12 p-1 shadow">
+    <nav class="navbar navbar-expand-lg">
+        <section class="container-fluid">
+            <figure><img src="logo.png" alt="logo" routerLink="" class="mt-2 logo"></figure>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item d-flex justify-content-end">
+                        <div class="m-1 p-1" [routerLinkActive]="'active'" routerLink="/shopping-cart">
+                            <span class="position-relative mx-2">
+                                <i class="bi bi-cart3 fs-5"></i>
+                                <i class="counter-view">{{cart.length}}</i>
+                            </span>
+                        </div>
+                    </li>
+                    <li class="nav-item d-flex justify-content-end">
+                        <button class="m-1 text-capitalize btn border-cst-primary text-cst-primary rounded-0"
+                            routerLink="/auth/login" [routerLinkActive]="'active'">log in</button>
+                    </li>
+                    <li class="nav-item d-flex justify-content-end">
+                        <button class="m-1 text-capitalize btn bg-cst-primary text-cst-light rounded-0"
+                            routerLink="/auth/register" [routerLinkActive]="'active'"> sign up</button>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </nav>
+</header>

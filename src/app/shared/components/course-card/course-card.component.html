@@ -1,0 +1,18 @@
+<div class="card p-3">
+    <picture class="position-relative">
+        <img [src]="item.image" alt="" class="rounded-2 w-100">
+        @if(item.discount)
+        {<small class="position-absolute top-0 end-0 m-2 text-light bg-cst-pnk rounded-2 h-content fs-12 p-4px">-{{item.discount | currency}}</small>}
+        <i class="bi bi-cart3 fw-semibold position-absolute bottom-0 start-0 m-2 text-light h-content fs-20 shadow p-4px"></i>
+    </picture>
+    <div routerLink="/course-details" [state]="item">
+        <div class="d-flex justify-content-between py-1 mb-0px">
+            <p class="fw-600 fs-6 text-cst-primary">{{item.price | currency}}</p>
+            <button class="btn h-content p-2px m-0px  text-cst-light bg-cst-primary rounded-3 fs-12">{{item.category}}</button>
+        </div>
+        <p class="fs-20 fs-16-sm text-cst-maxblack mb-0px">{{item.title}}</p>
+        <p class="fs-16 fs-semibold text-cst-secondary m-0px">By {{item.author}}</p>
+        <div class="d-flex align-items-center">  <ngb-rating [rate]="5" [max]="5" [readonly]="true" class="text-warning fs-5"/> <span class="text-cst-dark fw-bold fs-12 ps-2">({{item.ratingCount}} Ratings)</span> </div>
+        <small class="fs-semibold text-cst-secondary">{{item.hours}} Total Hours. {{item.lectures}} Lectures. {{item.level}} </small>
+    </div>
+</div>

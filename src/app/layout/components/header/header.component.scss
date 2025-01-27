@@ -1,0 +1,23 @@
+.navbar-collapse {
+    flex-grow: 0;
+}
+
+.counter-view {
+    position: absolute;
+    top: -11px;
+    right: -9px;
+    color: orangered;
+    font-size: 15px;
+}
+
+
+@media screen and (max-width : 700px) {
+    .logo{
+        margin-left: -15px;
+    }
+    
+    .navbar-toggler {
+        display: contents;
+    }
+
+}

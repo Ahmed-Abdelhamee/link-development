@@ -1,3 +1,3 @@
 export const environment = {
-    domain : 'http://localhost:3000'
+    domain : 'https://api.npoint.io/'
 }

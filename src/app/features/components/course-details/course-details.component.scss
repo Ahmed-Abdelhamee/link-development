@@ -1,0 +1,11 @@
+@use '../../../shared/modal/sass/mixins.scss' as * ;
+
+.circle{
+   @include circle(40px);
+}
+
+@media screen and (max-width:700px) {
+   .flex-sm-column-reverse{
+      // flex-direction: column-reverse !important;
+   }
+}

@@ -1,0 +1,9 @@
+label{
+    margin-block: 8px;
+    font-size: 14px;
+}
+@media screen and (max-width:700px) {
+    label{
+        font-size: 12.5px !important;
+    }
+}

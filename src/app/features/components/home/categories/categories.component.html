@@ -1,0 +1,9 @@
+<div class="col-12 text-cst-maxblack text-center fs-2 mt-3 mb-3">Top Courses</div>
+
+<div class="col-12 d-flex flex-wrap justify-content-center">
+    <div class="hidden-in-mob">
+        @for (item of array; track $index) {
+            <button class="btn btn-secondary px-5 text-capitalize m-2 shadow-none" (click)="filter(item.id)" [ngClass]="{'bg-cst-primary':item.id == category}" routerLink="">{{item.name}}</button>
+        }
+    </div>
+</div>

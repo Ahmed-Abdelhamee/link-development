@@ -1,0 +1,52 @@
+<div class="col-12">
+  <h4>Checkout Page</h4>
+    <div class="checkout-form card rounded-3 p-2 px-3">
+      <form [formGroup]="checkoutForm" (ngSubmit)="submit()">
+        <!-- Country and State Fields -->
+        <div class="d-flex justify-content-between">
+          <div class="col-sm-5 form-group">
+            <label for="country">Country *</label>
+            <input id="country" formControlName="country" placeholder="Enter Country" class="form-control" />
+          </div>
+          <div class="col-sm-5 form-group">
+            <label for="state">State/Union Territory *</label>
+            <input id="state" formControlName="state" placeholder="Enter State" class="form-control" />
+          </div>
+        </div>
+    
+        <h6 class="my-2">Payment Method</h6>
+        <div class="col-12 bg-light px-2 pt-1 pb-2 rounded-3">
+          <!-- Payment Method -->
+          <div class="form-group">
+            <div class="form-group">
+              <input type="radio" id="creditCard" formControlName="paymentMethod" class="me-2" value="creditCard" checked />
+              <label for="creditCard">Credit/Debit Card</label>
+            </div>
+          </div>
+      
+          <!-- Credit Card Details -->
+          <div formGroupName="creditCard">
+            <div class="form-group">
+              <label for="nameOnCard">Name of Card *</label>
+              <input id="nameOnCard" formControlName="nameOnCard" placeholder="Name of card" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="cardNumber">Card Number *</label>
+              <input id="cardNumber" formControlName="cardNumber" placeholder="Card Number" class="form-control" />
+            </div>
+            <div class="col-12 d-flex justify-content-between">
+              <div class="col-sm-5 form-group">
+                <label for="expiryDate">Expiry Date *</label>
+                <input id="expiryDate" formControlName="expiryDate" placeholder="Enter Expiry Date" class="form-control" />
+              </div>
+              <div class="col-sm-5 form-group mb-2">
+                <label for="cvv">CVC/CVV *</label>
+                <input id="cvv" formControlName="cvv" placeholder="Enter CVC/CVV" class="form-control" />
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </form>
+    </div>
+</div>

@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './core/components/header/header.component';
-import { FooterComponent } from './core/components/footer/footer.component';
+import { FooterComponent } from './layout/components/footer/footer.component';
+import { HeaderComponent } from './layout/components/header/header.component';
+import { Store } from '@ngrx/store';
+import { loadCart } from './core/store/cart.actions';
 
 @Component({
   selector: 'app-root',
@@ -12,4 +14,9 @@ import { FooterComponent } from './core/components/footer/footer.component';
 })
 export class AppComponent {
   title = 'task';
+  constructor(private store:Store) {
+      store.dispatch(loadCart())
+
+      window.ononline=()=>location.reload()
+  }
 }

@@ -1,0 +1,153 @@
+//  circle view
+@mixin circle($size){
+    border-radius: 50%;
+    width: $size;
+    height:$size;
+}
+
+// structure view 
+@mixin customView($media:''){
+    @for $num from 0 through 100 {
+        // width
+        .w-#{$num}pct#{$media} {
+            width: calc(#{$num} * 1%) !important;
+        }
+        // height
+        .h-#{$num}pct#{$media} {
+            height: calc(#{$num} * 1%) !important;
+        }
+    
+        // custom margin in pixel
+        .m-#{$num}px#{$media}{
+            margin: #{$num}px !important;
+        }
+        .mt-#{$num}px#{$media}{
+            margin-top: #{$num}px !important;
+        }
+        .mb-#{$num}px#{$media}{
+            margin-bottom: #{$num}px !important;
+        }
+        .my-#{$num}px#{$media}{
+            margin-block: #{$num}px !important;
+        }
+        .mx-#{$num}px#{$media}{
+            margin-inline: #{$num}px !important;
+        }
+        .ms-#{$num}px#{$media}{
+            margin-left: #{$num}px !important;
+        }
+        .me-#{$num}px#{$media}{
+            margin-right: #{$num}px !important;
+        }
+        .ml-#{$num}px#{$media}{
+            margin-left: #{$num}px !important;
+        }
+        .mr-#{$num}px#{$media}{
+            margin-right: #{$num}px !important;
+        }
+        // custom margin in percentage
+        .m-#{$num}pct#{$media}{
+            margin: calc($num * 1%) !important;
+        }
+        .mt-#{$num}pct#{$media}{
+            margin-top: calc($num * 1%) !important;
+        }
+        .mb-#{$num}pct#{$media}{
+            margin-bottom: calc($num * 1%) !important;
+        }
+        .my-#{$num}pct#{$media}{
+            margin-block: calc($num * 1%) !important;
+        }
+        .mx-#{$num}pct#{$media}{
+            margin-inline: calc($num * 1%) !important;
+        }
+        .ms-#{$num}pct#{$media}{
+            margin-left:  calc($num * 1%) !important;
+        }
+        .me-#{$num}pct#{$media}{
+            margin-right:  calc($num * 1%) !important;
+        }
+        .ml-#{$num}pct#{$media}{
+            margin-left: calc($num * 1%) !important;
+        }
+        .mr-#{$num}pct#{$media}{
+            margin-right: calc($num * 1%) !important;
+        }
+    
+        // custom padding in pixel
+        .p-#{$num}px#{$media}{
+            padding: #{$num}px !important;
+        }
+        .pt-#{$num}px#{$media}{
+            padding-top: #{$num}px !important;
+        }
+        .pb-#{$num}px#{$media}{
+            padding-bottom: #{$num}px !important;
+        }
+        .py-#{$num}px#{$media}{
+            padding-block: #{$num}px !important;
+        }
+        .px-#{$num}px#{$media}{
+            padding-inline: #{$num}px !important;
+        }
+        .ps-#{$num}px#{$media}{
+            padding-left: #{$num}px !important;
+        }
+        .pe-#{$num}px#{$media}{
+            padding-right: #{$num}px !important;
+        }
+        .pl-#{$num}px#{$media}{
+            padding-left: #{$num}px !important;
+        }
+        .pr-#{$num}px#{$media}{
+            padding-right: #{$num}px !important;
+        }
+        // custom padding in percentage
+        .p-#{$num}pct#{$media}{
+            padding: calc($num * 1%) !important;
+        }
+        .pt-#{$num}pct#{$media}{
+            padding-top: calc($num * 1%) !important;
+        }
+        .py-#{$num}pct#{$media}{
+            padding-block: calc($num * 1%) !important;
+        }
+        .px-#{$num}pct#{$media}{
+            padding-inline: calc($num * 1%) !important;
+        }
+        .ps-#{$num}pct#{$media}{
+            padding-left:  calc($num * 1%) !important;
+        }
+        .pe-#{$num}pct#{$media}{
+            padding-right:  calc($num * 1%) !important;
+        }
+        .pl-#{$num}pct#{$media}{
+            padding-left: calc($num * 1%) !important;
+        }
+        .pr-#{$num}pct#{$media}{
+            padding-right: calc($num * 1%) !important;
+        }
+
+        //  custom font-size 
+        .fs-#{$num}#{$media}{
+            font-size: #{$num}px !important;
+        }
+    }
+}
+
+@include customView();
+
+@media screen and (max-width:991px){
+    @include customView('-md');
+}
+
+@media screen and (max-width:700px){
+    @include customView('-sm');
+}
+
+
+
+
+
+
+

@@ -1,0 +1,11 @@
+<div class="col-12 d-flex flex-wrap justify-content-center">
+    @for (item of array | paginate : {itemsPerPage : pageSize , currentPage : currentPage}; track $index) {
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4 p-8 flex items-center justify-center p-2">
+            <app-course-card [item]="item"></app-course-card>
+        </div>
+    }
+</div>
+
+<div class="col-12 text-center m-20">
+    <pagination-controls (pageChange)="currentPage=$event"></pagination-controls>
+</div>

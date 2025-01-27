@@ -1,0 +1,32 @@
+<div class="col-12">
+    <h4><b>Shopping Cart</b></h4>
+    @if(!cart().length){
+        <div class="p-5pct">
+            <p class="alert alert-warning p-25px rounded-2 fs-20">No courses choosed before</p>
+        </div>
+    }
+    <!-- looping on array and viewing cources -->
+    @for (item of cart(); track $index) {
+        <div class="p-3 cart-card mb-2">
+            <div class="d-flex flex-wrap justifuy-content-between">
+                <div class="d-flex flex-wrap">
+                    <picture class="position-relative w-25pct w-50pct-md mt-8px">
+                        <img [src]="item.image" alt="" class="rounded-2 w-100">
+                        @if(item.discount){
+                            <span class="position-absolute top-0 end-0 m-2 text-light bg-cst-pnk rounded-2 h-content fs-12 p-4px">-{{item.discount | currency}}</span>}
+                    </picture>
+                    <div class="px-6px">
+                        <p class="fs-20 fs-16-sm text-cst-maxblack my-0px p-0px">{{item.title}}</p>
+                        <p class="fs-16 fs-semibold text-cst-secondary m-0px">By {{item.author}}</p>
+                        <div class="d-flex align-items-center">
+                            <ngb-rating [rate]="5" [max]="5" [readonly]="true" class="text-warning fs-5"/> 
+                            <span class="text-cst-dark fw-bold fs-12 ps-2">{{item.hours}} Total Hours. {{item.lectures}} Lectures. {{item.level}}</span> 
+                        </div>
+                        <small class="text-danger" (click)="remove(item.id)">remove</small>
+                    </div>
+                </div>
+            </div>
+            <div class="fw-600 fs-6 text-cst-primary fw-bold">{{item.price | price : item.discount | currency}}</div>
+        </div>
+    }
+</div>

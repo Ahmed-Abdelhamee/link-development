@@ -1,0 +1,50 @@
+
+<section class="col-12 d-flex justify-content-center flex-md-row flex-sm-column-reverse flex-wrap">
+    <div class="col-sm-8 px-50px px-10px-md">
+        <div class="w-100 bg-light overflow-hidden rounded-3 my-4 p-10px-md">
+            <p-breadcrumb [model]="items" [style]="{border: 'none', background:'transparent', marginLeft:'-30px' , paddingBottom:'0px'}"/>
+            <div class="px-20px px-10px-md w-100 text-capitalize fw-bold m-0px p-2">
+                <article>
+                    <p class="fs-30 fs-24-md fs-18-sm fw-bold">{{item.title}}</p>
+                    <p class="text-cst-secondary">{{item.description}}</p>
+                </article>
+                <div class="d-flex flex-wrap align-items-center">
+                    <ngb-rating [rate]="5" [max]="5" [readonly]="true" class="text-warning fs-20"/> 
+                    <small class="fs-semibold text-cst-secondary"> <span class="mx-2">|</span> {{item.hours}} Total Hours. {{item.lectures}} Lectures. {{item.level}} </small>
+                </div>
+                <div class="d-flex flex-wrap align-items-center text-capitalize mt-2 text-cst-secondary">
+                    <img src="man.png" alt="created by" class="circle my-2 me-2"> created by {{item.author}}
+                </div>
+                <p class="fs-semibold text-cst-secondary"> <i class="bi bi-globe"></i> English, Spanish, Italian, German</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4 p-3">
+        <div class="card p-2">
+            <img [src]="item.image" alt="" class="rounded-2 w-100">
+            <p class="text-cst-maxblack fs-20 fs-16-md p-2">
+                @if(item.discount){
+                    <span class="fw-bold">{{item.price | price : item.discount | currency}}</span>
+                }
+                <span class="text-secondary text-decoration-line-through mx-2 fw-bold">{{item.price| currency}}</span>
+                @if(item.discount){
+                    <span class="text-cst-success fw-bold">{{- item.discount | currency}}</span>
+                }
+            </p>
+            <div>
+                <button class="btn btn-info text-capitalize text-light fw-bold d-block mx-auto w-90pct mb-3" (click)="addToCart(item)">add to cart</button>
+                <button class="btn btn-outline-info text-capitalize fw-bold d-block mx-auto w-90pct" routerLink="/shopping-cart">buy now</button>
+                <hr>
+                <p class="m-3 fw-bold">Share</p>
+                <div class="m-3 d-flex justify-content-between">
+                    <p class="shadow rounded-circle p-2" [innerHTML]="iconService.facebookIcon"></p>
+                    <p class="shadow rounded-circle p-2 w-16pct d-flex justify-content-center align-items-center"><i class="fs-20 bi bi-twitter-x"></i></p>
+                    <p class="shadow rounded-circle p-2" [innerHTML]="iconService.googleIcon"></p>
+                    <p class="shadow rounded-circle p-2 w-16pct d-flex justify-content-center align-items-center"><i class="fs-20 bi bi-github"></i></p>
+                    <p class="shadow rounded-circle p-2 w-16pct d-flex justify-content-center align-items-center text-info"><i class="fs-20 bi bi-microsoft"></i></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

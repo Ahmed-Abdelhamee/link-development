@@ -1,0 +1,97 @@
+@use '../../../../shared/modal/sass/mixins.scss' as *;
+
+.left-circles {
+  position: absolute;
+  top: 3%;
+  left: 8%;
+  width: 50%;
+  z-index: -1;
+}
+
+.right-circles{
+  @extend .left-circles;
+  top: 44%;
+  left: 33%;
+  width: 43%;
+}
+
+.move-item-to-left {
+  margin-left: -10px;
+  position: relative;
+  z-index: -1;
+}
+
+// ------------- image contant with flags ----------------
+
+.girl-image {
+  @include circle(300px);
+}
+
+%flag-position{
+  position: absolute;
+  z-index: 2;
+}
+
+.flag-left-center-position {
+  @extend %flag-position;
+  top: 36%;
+  left: -35px;
+}
+
+.flag-top-right-position{
+  @extend %flag-position;
+  top: 10%;
+  left: 50%;
+}
+
+.flag-bottom-right-position {
+  @extend %flag-position;
+  bottom: 21%;
+  left: 40%;
+}
+
+.circle-20vw {
+  @include circle(20vw);
+  @media screen and (max-width : 700px){
+    @include circle(75vw);
+  }
+}
+
+.circle-2vw{
+  @include circle(2vw);
+  margin-top: -40px;
+  @media screen and (max-width : 700px){
+    @include circle(6vw);
+  }
+}
+.circle-1vw{
+  @include circle(1vw);
+  margin-top: 20px;
+  margin-left: -20px;
+  @media screen and (max-width : 700px){
+    @include circle(2vw);
+  }
+}
+
+
+// ------- dot --------
+
+.dot{
+  @include circle(20vw);
+  background-image: radial-gradient(circle, rgba(36, 55, 172, 0.12), white , white);
+  position: relative;
+  z-index: -2;
+  margin-top: -9vw;
+}
+
+
+swiper-container {
+    width: 100%;
+    height: 100%;
+    @media screen and (min-width:1200px) {
+      swiper-slide{
+        min-height: 75vh !important;
+      }
+    }
+}
+
