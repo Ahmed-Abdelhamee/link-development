@@ -36,7 +36,10 @@ export class LoginComponent {
   submit() {
     if (this.login.valid)
       this.authService.login(this.login.value).subscribe({
-        next:(res)=> {this.cookies.set("user",JSON.stringify(res));
+        next:(res)=> {
+          this.cookies.set("user",JSON.stringify(res));
+          this.toastr.success("login successfully");
+          this.route.navigate(['/shopping-cart'])
         }
       })
     else
